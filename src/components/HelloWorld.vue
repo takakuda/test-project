@@ -1,8 +1,10 @@
 <template>
   <div>
     <p>{{title}}</p>
-    <!-- 子コンポーネントのmessageを設定して呼び出す -->
-    <hello-child message='メッセージだよ'/>
+    <!-- v-model を使ってimput_msgにimputタグで入力した値を都度反映する -->
+    <p><input v-model="input_msg"></P>
+    <!-- 子コンポーネントのmessageに反映した値を設定して呼び出す -->
+    <hello-child :message="input_msg"/>
   </div>
 </template>
 
@@ -11,7 +13,8 @@ import HelloChild from './HelloChild'
 export default {
   data: function () {
     return {
-      title: 'はろー！わーるど！'
+      title: 'はろー！わーるど！',
+      input_msg: ''
     }
   },
   components: {
