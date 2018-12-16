@@ -1,8 +1,8 @@
 <template>
   <div>
     <p>{{title}}</p>
-    <!-- ここでpropsに設定された値をそのまま表示する -->
-    <p>{{message}}</p>
+    <!-- ボタンが押されるとincrementCounterが実装される -->
+    <button v-on:click="incrementCounter">{{ counter }}</button>
   </div>
 </template>
 
@@ -10,10 +10,17 @@
 export default {
   data: function () {
     return {
-      title: 'はろーこども！'
+      title: 'はろーこども！',
+      counter: 0
     }
   },
-  props: ['message']
+  methods: {
+    incrementCounter: function () {
+      this.counter += 1
+      // 親コンポーネントのincrementが呼び出す（実行）
+      this.$emit('increment')
+    }
+  }
 }
 </script>
 
